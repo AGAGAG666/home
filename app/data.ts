@@ -8,6 +8,11 @@ type Project = {
   link: string
 }
 
+type Blog = {
+  name: string
+  link: string
+}
+
 export const SOCIAL_LINKS: SocialLink[] = [
   {
     label: 'Telegram',
@@ -43,3 +48,10 @@ export const PROJECTS: Project[] = [
 ]
 
 export const EMAIL = 'agagag666@ecec.us.ci'
+
+export const BLOGS: Blog[] = [
+  {
+    name: '博客',
+    link: '#',
+  },
+]

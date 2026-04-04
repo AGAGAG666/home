@@ -5,7 +5,7 @@ import React, { useState } from 'react';
 import { motion } from 'motion/react';
 import { Magnetic } from '@/components/ui/magnetic';
 import { SimpleModal } from '@/components/ui/simple-modal';
-import { EMAIL, SOCIAL_LINKS, PROJECTS } from './data';
+import { EMAIL, SOCIAL_LINKS, PROJECTS, BLOGS } from './data';
 
 const VARIANTS_CONTAINER = {
   hidden: { opacity: 0 },
@@ -94,6 +94,46 @@ function MagneticSocialLink({
   );
 }
 
+function MagneticButton({
+  children,
+  onClick,
+  className = "",
+}: {
+  children: React.ReactNode;
+  onClick: () => void;
+  className?: string;
+}) {
+  const [isMobile, setIsMobile] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsMobile(window.matchMedia('(max-width: 768px)').matches);
+  }, []);
+
+  // 移动端直接用 button 标签
+  if (isMobile) {
+    return (
+      <button
+        onClick={onClick}
+        className={className}
+      >
+        {children}
+      </button>
+    );
+  }
+
+  // 非移动端使用磁吸效果
+  return (
+    <Magnetic springOptions={{ bounce: 0 }} intensity={0.3}>
+      <button
+        onClick={onClick}
+        className={className}
+      >
+        {children}
+      </button>
+    </Magnetic>
+  );
+}
+
 export default function Personal() {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -134,38 +174,49 @@ export default function Personal() {
         </div>
       </motion.section>
 
-       <motion.section
-          variants={VARIANTS_SECTION}
-          transition={TRANSITION_SECTION}
-       >
-      <button
-  onClick={() => setIsModalOpen(true)}
-  className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2 md:px-2.5 py-1 mb-4 md:mb-5 text-base md:text-lg font-medium text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 active:bg-zinc-950 active:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 dark:active:bg-zinc-700"
->
-      博客
-         <svg
-            width="15"
-            height="15"
-            viewBox="0 0 15 15"
-            fill="none"
-            xmlns="http://www.w3.org/2000/svg"
-            className="h-3 w-3"
-        >
-        <path
-             d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
-             fill="currentColor"
-             fillRule="evenodd"
-             clipRule="evenodd"
-        />
-        </svg>
-      </button>
+      <motion.section
+         variants={VARIANTS_SECTION}
+         transition={TRANSITION_SECTION}
+      >
+        <h3 className="mb-4 md:mb-5 text-base md:text-lg font-medium"> 文章...喵?</h3>
+        <div className="flex flex-wrap gap-2 md:gap-3 max-w-4xl">
+          {BLOGS.map((blog) => (
+            blog.link === '#' ? (
+              <MagneticButton
+                key={blog.name}
+                onClick={() => setIsModalOpen(true)}
+                className="group relative inline-flex shrink-0 items-center gap-[1px] rounded-full bg-zinc-100 px-2 md:px-2.5 py-1 text-xs md:text-sm text-black transition-colors duration-200 hover:bg-zinc-950 hover:text-zinc-50 active:bg-zinc-950 active:text-zinc-50 dark:bg-zinc-800 dark:text-zinc-100 dark:hover:bg-zinc-700 dark:active:bg-zinc-700"
+              >
+                <span className="font-medium text-sm md:text-base">{blog.name}</span>
+                <svg
+                  width="15"
+                  height="15"
+                  viewBox="0 0 15 15"
+                  fill="none"
+                  xmlns="http://www.w3.org/2000/svg"
+                  className="h-3 w-3"
+                >
+                  <path
+                    d="M3.64645 11.3536C3.45118 11.1583 3.45118 10.8417 3.64645 10.6465L10.2929 4L6 4C5.72386 4 5.5 3.77614 5.5 3.5C5.5 3.22386 5.72386 3 6 3L11.5 3C11.6326 3 11.7598 3.05268 11.8536 3.14645C11.9473 3.24022 12 3.36739 12 3.5L12 9.00001C12 9.27615 11.7761 9.50001 11.5 9.50001C11.2239 9.50001 11 9.27615 11 9.00001V4.70711L4.35355 11.3536C4.15829 11.5488 3.84171 11.5488 3.64645 11.3536Z"
+                    fill="currentColor"
+                    fillRule="evenodd"
+                    clipRule="evenodd"
+                  />
+                </svg>
+              </MagneticButton>
+            ) : (
+              <MagneticSocialLink key={blog.name} link={blog.link}>
+                <span className="font-medium text-sm md:text-base">{blog.name}</span>
+              </MagneticSocialLink>
+            )
+          ))}
+        </div>
       </motion.section>
-
        <SimpleModal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
           <h2 className="text-lg font-semibold mb-4">博客列表</h2>
           <BlogModalContentClient />
        </SimpleModal>
-       
+
       <motion.section
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}

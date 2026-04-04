@@ -127,7 +127,7 @@ function SiteUptime() {
 
 export function Footer() {
   return (
-    <footer className="mt-16 md:mt-24 border-t border-zinc-100 px-0 py-4 dark:border-zinc-800">
+    <footer className="mt-8 border-t border-zinc-100 px-0 py-4 dark:border-zinc-800">
       <div className="flex flex-col gap-3 md:flex-row md:items-center md:justify-between">
         <a href="https://github.com/AGAGAG666/AG_home.git" target="_blank">
           <TextLoop className="text-xs text-zinc-500">

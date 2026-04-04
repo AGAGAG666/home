@@ -68,6 +68,9 @@ export const SOCIAL_LINKS: SocialLink[] = [
 
 编辑 `app/layout.tsx` 中的 `viewport`
 
+### 修改跳转链接组件
+在 `app/data.ts` 中修改
+
 ### 添加博客文章
 在 `app/blog` 目录下创建 .md 文件，必须包含下述描述
   ```md

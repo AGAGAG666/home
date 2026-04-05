@@ -46,7 +46,8 @@ export function AnimatedBackground({
     }
   }, [defaultValue])
 
-  return Children.map(children, (child: any, index) => {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  return Children.map(children, (child: React.ReactElement<any>, index) => {
     const id = child.props['data-id']
 
     const interactionProps = enableHover

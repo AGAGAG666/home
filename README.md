@@ -10,11 +10,12 @@
 - 🔐 2FA 双重要素验证系统（本地存储，隐私安全）
 - 🌓 深色/浅色主题切换
 
-
 ## 最近更新
 
 - 2026-04-05: 添加博客系统和 2FA 功能
-- 2026-01-26: 完成移动端响应式优化
+- 2026-04-06: 添加博客搜索功能
+
+- 更新详见[update文档](Update.md)
 
 ## fix
 
@@ -28,13 +29,14 @@ git clone https://github.com/AGAGAG666/AG_home.git
 cd AG_home
 
 # 安装依赖
-npm install && npm install react-syntax-highlighter @types/react-syntax-highlighter
+pnpm install 
 
 # 启动开发服务器
-npm run dev
+pnpm run dev
 ```
 
-在浏览器中打开 [loveag.dpdns.org](https://loveag.dpdns.org) 查看效果。
+在浏览器中打开 [loveag.dpdns.org](https://loveag.dpdns.org) 查看效果
+在浏览器打开[loveag.dpdns.org](https:loveag.dpdns.org)预览
 
 ## 自定义配置
 
@@ -45,6 +47,20 @@ npm run dev
 [原仓库](https://github.com/xiaomuahua666/nprofile.git)
 
 
+### 🚀 快速开始
+
+- **[安装和使用指南](./INSTALLATION.md)** - 环境配置、安装步骤、自定义方法
+- **[快速参考](./QUICK_REFERENCE.md)** - 核心改进总结、技术实现要点
+
+### 📊 技术文档
+
+- **[移动端优化详解](./MOBILE_OPTIMIZATION.md)** - 响应式设计原理、最佳实践
+- **[变更详情](./CHANGES_DETAIL.md)** - 代码修改对比、优化成果分析
+
+### 🛠️ 维护工具
+
+- **[修复记录](./fix.md)** - Bug修复历史、版本更新日志
+- **[文档索引](./README_DOCS.md)** - 完整文档导航、学习路径推荐
 
 ## 技术栈
 
@@ -55,6 +71,5 @@ npm run dev
 - **图标**: Lucide React
 - **主题**: next-themes
 - **Markdown解析**: gray-matter + react-markdown + remark-gfm
-
 
 用AI写的，不要拷打我QWQ

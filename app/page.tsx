@@ -1,5 +1,6 @@
 'use client';
 
+import Image from 'next/image';
 import { BlogModalContentClient } from '@/components/BlogModalContentClient';
 import React, { useState } from 'react';
 import { motion } from 'motion/react';
@@ -158,16 +159,19 @@ export default function Personal() {
         <div className="flex flex-col-reverse gap-4 md:flex-row md:gap-8 md:items-start">
           <div className="flex-1">
             <p className="text-sm md:text-base text-zinc-600 dark:text-zinc-400 leading-relaxed">
-              一名普通人，喜欢听歌，玩玩游戏，偶尔琢磨琢磨一些不寻常的东西。礼貌交流，我会对你很好(- o -)
-              <br/>
-              喜欢甜食，最讨厌苦味！！！
+              一只喜欢听歌和玩游戏的小可爱，偶尔琢磨一些有趣的小东西呢～ ( ´▽`) <br/>
+              热爱交流，与你互动时会竭尽温柔 (˃ ᗝ ˂) <br/>
+              甜食爱好者，绝对讨厌苦苦的味道！！！ (´；ω；`) <br/>
+              欢迎来一起探索有趣的想法吧！✨ ( ´▽` )
             </p>
           </div>
 
           <div className="shrink-0">
-            <img
+            <Image
               src="/avatar.jpg"
               alt="用户头像"
+              width={128}
+              height={128}
               className="w-24 h-24 md:w-32 md:h-32 rounded-xl object-cover ring-1 ring-zinc-200 dark:ring-zinc-800"
             />
           </div>
@@ -178,7 +182,7 @@ export default function Personal() {
          variants={VARIANTS_SECTION}
          transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-4 md:mb-5 text-base md:text-lg font-medium"> 文章...喵?</h3>
+        <h3 className="mb-4 md:mb-5 text-base md:text-lg font-medium">📚 文章...喵?</h3>
         <div className="flex flex-wrap gap-2 md:gap-3 max-w-4xl">
           {BLOGS.map((blog) => (
             blog.link === '#' ? (
@@ -221,7 +225,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-4 md:mb-5 text-base md:text-lg font-medium">小玩意…?</h3>
+        <h3 className="mb-4 md:mb-5 text-base md:text-lg font-medium">✨ 小玩意…?</h3>
         <div className="flex flex-wrap gap-2 md:gap-3 max-w-4xl">
           {PROJECTS.map((project) => (
             <MagneticSocialLink key={project.name} link={project.link}>
@@ -235,7 +239,7 @@ export default function Personal() {
         variants={VARIANTS_SECTION}
         transition={TRANSITION_SECTION}
       >
-        <h3 className="mb-4 md:mb-5 text-base md:text-lg font-medium">与我联系</h3>
+        <h3 className="mb-4 md:mb-5 text-base md:text-lg font-medium">💌 与我联系</h3>
         <p className="mb-4 md:mb-5 text-sm md:text-base text-zinc-600 dark:text-zinc-400 break-all">
           邮箱：
           <a

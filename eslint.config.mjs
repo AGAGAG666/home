@@ -14,7 +14,6 @@ const eslintConfig = [
     "next/core-web-vitals",
     "next/typescript",
   ),
-  "plugin:mdx/recommended",
 ];
 
 export default eslintConfig;

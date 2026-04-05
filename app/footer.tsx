@@ -73,15 +73,20 @@ function SiteUptimeSpan() {
     const calculateUptime = () => {
       const launchDate = new Date('2026-03-22').getTime()
       // 转换为北京时间 (UTC+8)
-      const now = Date.now() + (new Date().getTimezoneOffset() + 480) * 60 * 1000
+      const now =
+        Date.now() + (new Date().getTimezoneOffset() + 480) * 60 * 1000
       const diff = now - launchDate
 
       const days = Math.floor(diff / (1000 * 60 * 60 * 24))
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
+      const hours = Math.floor(
+        (diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60),
+      )
       const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
       const seconds = Math.floor((diff % (1000 * 60)) / 1000)
 
-      setUptime(`${days}天${hours}小时${minutes}分${String(seconds).padStart(2, '0')}秒`)
+      setUptime(
+        `${days}天${hours}小时${minutes}分${String(seconds).padStart(2, '0')}秒`,
+      )
     }
 
     calculateUptime()
@@ -91,38 +96,6 @@ function SiteUptimeSpan() {
   }, [])
 
   return <span>本站运行: {uptime}</span>
-}
-
-function SiteUptime() {
-  const [uptime, setUptime] = useState('')
-
-  useEffect(() => {
-    const calculateUptime = () => {
-      // 网站上线时间 (改成你的上线日期)
-      const launchDate = new Date('2026-03-22').getTime()
-      // 转换为北京时间 (UTC+8)
-      const now = Date.now() + (new Date().getTimezoneOffset() + 480) * 60 * 1000
-      const diff = now - launchDate
-
-      const days = Math.floor(diff / (1000 * 60 * 60 * 24))
-      const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60))
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000)
-
-      setUptime(`${days}天${hours}小时${minutes}分${String(seconds).padStart(2, '0')}秒`)
-    }
-
-    calculateUptime()
-    const interval = setInterval(calculateUptime, 1000)
-
-    return () => clearInterval(interval)
-  }, [])
-
-  return (
-    <span className="text-zinc-500 dark:text-zinc-400">
-      本站顺利运行: {uptime}ovo
-    </span>
-  )
 }
 
 export function Footer() {

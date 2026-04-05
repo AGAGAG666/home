@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import Link from 'next/link';
 import { motion, AnimatePresence } from 'motion/react';
 
 type SecretRecord = {
@@ -210,12 +211,12 @@ export default function TwoFactorAuthPage() {
     <div className="py-12 px-4 md:px-6">
       {/* 返回按钮 */}
       <div className="-mt-8 mb-4">
-        <a
+        <Link
           href="/"
           className="inline-flex items-center gap-2 text-sm text-zinc-500 transition-colors dark:text-zinc-400 hover:text-zinc-700 dark:hover:text-zinc-200"
         >
           ← 返回
-        </a>
+        </Link>
       </div>
 
       <motion.div
@@ -236,7 +237,7 @@ export default function TwoFactorAuthPage() {
           {/* 记录管理按钮 */}
           <button
             onClick={() => setShowRecords(!showRecords)}
-            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-purple-600 hover:bg-purple-700 text-white rounded-lg font-medium text-sm transition-all shadow-sm hover:shadow-md mb-6"
+            className="w-full flex items-center justify-center gap-2 px-4 py-3 bg-blue-600 hover:bg-blue-700 text-white dark:bg-blue-900/20 dark:hover:bg-blue-900/30 dark:text-blue-600 rounded-lg font-medium text-sm transition-all shadow-sm hover:shadow-md mb-6 border border-blue-200 dark:border-blue-800"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" />
@@ -364,8 +365,8 @@ export default function TwoFactorAuthPage() {
           )}
 
           <div className="space-y-6">
-            <div className="bg-purple-50 dark:bg-purple-900/20 border border-purple-200 dark:border-purple-800 rounded-lg p-4 mb-6">
-              <p className="text-sm text-purple-800 dark:text-purple-200">
+            <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 mb-6">
+              <p className="text-sm text-blue-800 dark:text-blue-300">
                 <strong>提示:</strong> 输入您已有的 2FA 密钥，系统将实时生成当前的验证码
               </p>
             </div>

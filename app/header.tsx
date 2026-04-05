@@ -4,11 +4,11 @@ import Link from 'next/link'
 
 export function Header() {
   return (
-    <header className="mb-6 md:mb-8 flex items-center justify-between">
+    <header className="mb-6 flex items-center justify-between md:mb-8">
       <div>
         <Link
           href="/"
-          className="text-xl md:text-2xl font-medium text-black dark:text-white animate-fade-in-delayed"
+          className="animate-fade-in-delayed text-xl font-medium text-black dark:text-white md:text-2xl"
         >
           AGAGAG666
         </Link>
@@ -16,7 +16,7 @@ export function Header() {
           as="p"
           preset="fade"
           per="char"
-          className="text-sm md:text-lg text-zinc-600 dark:text-zinc-500"
+          className="text-sm text-zinc-600 dark:text-zinc-500 md:text-lg"
           delay={0.5}
         >
           学生

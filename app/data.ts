@@ -18,15 +18,15 @@ export const SOCIAL_LINKS: SocialLink[] = [
     label: 'Telegram',
     link: 'https://t.me/EC_520',
   },
-    {
+  {
     label: 'Telegram2',
     link: 'https://t.me/AGAGAG666',
   },
-    {
+  {
     label: 'Discord',
     link: 'https://discord.gg/fDDdbSp6Ga',
   },
-    {
+  {
     label: 'Twitter(X)',
     link: 'https://x.com/AGAGAG666_',
   },

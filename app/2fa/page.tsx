@@ -19,6 +19,7 @@ export default function TwoFactorAuthPage() {
   const [copied, setCopied] = useState(false);
   const [records, setRecords] = useState<SecretRecord[]>([]);
   const [showRecords, setShowRecords] = useState(false);
+  const [showDeleteConfirm, setShowDeleteConfirm] = useState(false);
 
   // 从本地存储加载记录
   useEffect(() => {
@@ -77,6 +78,15 @@ export default function TwoFactorAuthPage() {
       setViewSecret('');
       setViewSecretName('');
     }
+  };
+
+  // 删除所有记录
+  const deleteAllRecords = () => {
+    saveRecords([]);
+    setViewSecret('');
+    setViewSecretName('');
+    setCurrentCode('');
+    setShowDeleteConfirm(false);
   };
 
   // 使用已有记录
@@ -277,6 +287,68 @@ export default function TwoFactorAuthPage() {
                     </motion.div>
                   ))}
                 </div>
+
+                {/* 删除全部按钮 */}
+                <div className="border-t border-zinc-200 dark:border-zinc-700 pt-3">
+                  <button
+                    onClick={() => setShowDeleteConfirm(true)}
+                    className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/30 text-red-600 dark:text-red-400 rounded-lg font-medium text-sm transition-colors"
+                  >
+                    <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                    </svg>
+                    删除全部记录
+                  </button>
+                </div>
+              </motion.div>
+            )}
+          </AnimatePresence>
+
+          {/* 删除确认弹窗 */}
+          <AnimatePresence>
+            {showDeleteConfirm && (
+              <motion.div
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+                className="fixed inset-0 bg-black/50 backdrop-blur-sm flex items-center justify-center z-50 p-4"
+                onClick={() => setShowDeleteConfirm(false)}
+              >
+                <motion.div
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  exit={{ scale: 0.9, opacity: 0 }}
+                  className="bg-white dark:bg-zinc-900 rounded-2xl p-6 max-w-sm w-full shadow-2xl"
+                  onClick={(e) => e.stopPropagation()}
+                >
+                  <div className="text-center">
+                    <div className="mx-auto mb-4 w-12 h-12 bg-red-100 dark:bg-red-900/30 rounded-full flex items-center justify-center">
+                      <svg className="w-6 h-6 text-red-600 dark:text-red-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                      </svg>
+                    </div>
+                    <h3 className="text-lg font-semibold text-zinc-900 dark:text-zinc-100 mb-2">
+                      确认删除全部记录？
+                    </h3>
+                    <p className="text-sm text-zinc-600 dark:text-zinc-400 mb-6">
+                      此操作将删除所有已保存的 2FA 密钥记录，且无法恢复。
+                    </p>
+                    <div className="flex gap-3">
+                      <button
+                        onClick={() => setShowDeleteConfirm(false)}
+                        className="flex-1 px-4 py-2.5 bg-zinc-100 hover:bg-zinc-200 dark:bg-zinc-800 dark:hover:bg-zinc-700 text-zinc-700 dark:text-zinc-300 rounded-lg font-medium text-sm transition-colors"
+                      >
+                        取消
+                      </button>
+                      <button
+                        onClick={deleteAllRecords}
+                        className="flex-1 px-4 py-2.5 bg-red-600 hover:bg-red-700 text-white rounded-lg font-medium text-sm transition-colors"
+                      >
+                        确认删除
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
               </motion.div>
             )}
           </AnimatePresence>

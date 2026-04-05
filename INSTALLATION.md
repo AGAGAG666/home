@@ -78,16 +78,15 @@ export const SOCIAL_LINKS: SocialLink[] = [
   title: 文章标题
   description: 简短描述
   ---
-  
+
   # 正文（Markdown 格式）
   ```
-· 调整样式以及文字渐入：修改 `globals.css` 
+调调整样式以及文字渐入:修改`globals.css`
 
-### 修改博客列表淡出淡入以及速度博客列表框内动画速度
-编辑  `components/ui/simple-modal.tsx` 中的 transition 
+### 修改博客列表淡出淡入以及速度
+编辑 `components/ui/simple-modal.tsx` 中的 transition
 
-编辑  `app/globals.css` 中的 .animate-fade-in-up 
-
+编辑 `app/globals.css` 中的 .animate-fade-in-up
 
 ## 构建和部署
 
